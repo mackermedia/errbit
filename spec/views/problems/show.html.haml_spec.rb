@@ -6,14 +6,14 @@ describe "problems/show.html.haml" do
   let(:pivotal_tracker) {
     Class.new(ErrbitPlugin::IssueTracker) do
       def self.label; 'pivotal'; end
-      def initialize(app, params); end
+      def initialize(options); end
       def configured?; true; end
       def comments_allowed?; false; end
     end
   }
   let(:github_tracker) {
     Class.new(ErrbitPlugin::IssueTracker) do
-      def initialize(app, params); end
+      def initialize(options); end
       def label; 'github'; end
       def configured?; true; end
       def comments_allowed?; false; end
@@ -38,8 +38,9 @@ describe "problems/show.html.haml" do
   end
 
   def with_issue_tracker(tracker, problem)
-    problem.app.issue_tracker = IssueTracker.new :type_tracker => tracker, :options => {:api_token => "token token token", :project_id => "1234"}
     ErrbitPlugin::Registry.stub(:issue_trackers).and_return(trackers)
+    problem.app.issue_tracker = IssueTracker.new :type_tracker => tracker, :options => {:api_token => "token token token", :project_id => "1234"}
+
     view.stub(:problem).and_return(problem)
     view.stub(:app).and_return(problem.app)
   end
