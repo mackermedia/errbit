@@ -444,6 +444,7 @@ DEPENDENCIES
   quiet_assets
   rack-ssl
   rack-ssl-enforcer
+  rails_12factor
   rails_autolink
   railties (~> 4.0.12)
   ri_cal
