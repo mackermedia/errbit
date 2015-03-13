@@ -28,6 +28,7 @@ gem 'hoptoad_notifier', "~> 2.4"
 gem 'draper', :require => false
 
 gem 'rails_12factor'
+gem 'newrelic_rpm'
 
 gem 'errbit_plugin'
 gem 'errbit_bitbucket_plugin'
